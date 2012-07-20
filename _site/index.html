@@ -240,6 +240,98 @@
             <p>In the former case you've written an unecessary statement.  In
             the latter case you are wasting all of our time because people that
             made coffeescript were too lazy to write a proper ternary operator.</p>
+          </li>
+          <li>
+            <p><code>and</code> and <code>or</code> are not equivalent to
+            <code>&&</code> and <code>||</code>.  They take a much lower precedence
+            and chances are that your code will not do what you'd like it to do. 
+            It is best to avoid <code>and</code> and <code>or</code> altogether 
+            despite the fact that your code may appear more readable.</p>
+          </li>
+          <li>
+            <p>Use the nilguard (<code>||=</code>) freely to memoize variables.
+            There are exceptions to when the nilguard will bite you in the butt:</p>
+            <ul>
+              <li>When <code>nil</code> is a valid value (duhhhhhhhh)</li>
+              <li>When <code>false</code> is a valid value</li>
+              <div class="highlight"><pre><code class="ruby"><span class="c1"># Future arrest pending</span>
+<span class="n">pants_on</span> <span class="o">=</span> <span class="kp">false</span>
+
+<span class="k">def</span> <span class="nf">can_go_outside?</span><span class="p">(</span><span class="n">pants_status</span><span class="p">)</span>
+  <span class="n">pants_status</span> <span class="o">||=</span> <span class="kp">true</span>
+
+  <span class="n">pants_status</span>
+<span class="k">end</span>
+
+<span class="n">can_go_outside?</span> <span class="n">pants_on</span> <span class="c1"># =&gt; true</span>
+
+<span class="c1"># Safety from prosecution</span>
+<span class="k">def</span> <span class="nf">can_go_outside?</span><span class="p">(</span><span class="n">pants_status</span><span class="p">)</span>
+  <span class="n">pants_status</span> <span class="o">=</span> <span class="kp">true</span> <span class="k">if</span> <span class="n">pants_status</span><span class="o">.</span><span class="n">nil?</span>
+
+  <span class="n">pants_status</span>
+<span class="k">end</span>
+
+<span class="n">can_go_outside?</span> <span class="n">pants_on</span> <span class="c1"># =&gt; false</span>
+</code></pre>
+</div>
+
+
+            </ul>
+          </li>
+          <li>
+          <p>Use <code>_</code> for unused block variables.</p>
+          <div class="highlight"><pre><code class="ruby"><span class="n">result</span> <span class="o">=</span> <span class="nb">hash</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">_</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+
+          </li>
+        </ul>
+      <h3><a href="#conditionals">Conditionals</a></h3>
+        <ul>
+          <li>
+            <p>The ternary operator hides multiple execution paths in one
+            handy little line.  It should be avoided except when the conditions
+            are trivial.  Consider using a multiline <code>if</code>/<code>else</code>
+            statement instead.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># Too much going on</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">4</span> <span class="p">:</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">3</span>
+
+<span class="c1"># Just enough going on</span>
+<span class="n">result</span> <span class="o">=</span> <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+  <span class="n">number</span> <span class="o">%</span> <span class="mi">4</span>
+<span class="k">else</span>
+  <span class="n">number</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>Use the modifier <code>if</code>/<code>unless</code> for single
+            statements.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># Not the greatest</span>
+<span class="k">def</span> <span class="nf">send_tweet</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">140</span>
+    <span class="no">TwitterStream</span><span class="o">.</span><span class="n">enqueue</span> <span class="n">message</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># Better</span>
+<span class="k">def</span> <span class="nf">send_tweet</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+  <span class="no">TwitterStream</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">140</span>
+<span class="k">end</span>
+
+<span class="c1"># Bettererer</span>
+<span class="k">def</span> <span class="nf">send_tweet</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+  <span class="no">TwitterStrem</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">usable_on_twitter?</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
           <li>
             <p>Indent <code>when</code> one level deeper than <code>case</code>.
             The <code>else</code> statement belongs on the same level of

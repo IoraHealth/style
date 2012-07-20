@@ -138,6 +138,41 @@ published: true
             <p>In the former case you've written an unecessary statement.  In
             the latter case you are wasting all of our time because people that
             made coffeescript were too lazy to write a proper ternary operator.</p>
+          </li>
+          <li>
+            <p><code>and</code> and <code>or</code> are not equivalent to
+            <code>&&</code> and <code>||</code>.  They take a much lower precedence
+            and chances are that your code will not do what you'd like it to do. 
+            It is best to avoid <code>and</code> and <code>or</code> altogether 
+            despite the fact that your code may appear more readable.</p>
+          </li>
+          <li>
+            <p>Use the nilguard (<code>||=</code>) freely to memoize variables.
+            There are exceptions to when the nilguard will bite you in the butt:</p>
+            <ul>
+              <li>When <code>nil</code> is a valid value (duhhhhhhhh)</li>
+              <li>When <code>false</code> is a valid value</li>
+              {% include nilguard_alternative.md %}
+            </ul>
+          </li>
+          <li>
+          <p>Use <code>_</code> for unused block variables.</p>
+          {% include unused_block_variables.md %}
+          </li>
+        </ul>
+      <h3><a href="#conditionals">Conditionals</a></h3>
+        <ul>
+          <li>
+            <p>The ternary operator hides multiple execution paths in one
+            handy little line.  It should be avoided except when the conditions
+            are trivial.  Consider using a multiline <code>if</code>/<code>else</code>
+            statement instead.</p>
+            {% include ternary_operator.md %}
+          </li>
+          <li>
+            <p>Use the modifier <code>if</code>/<code>unless</code> for single
+            statements.</p>
+            {% include single_line_conditional.md %}
           <li>
             <p>Indent <code>when</code> one level deeper than <code>case</code>.
             The <code>else</code> statement belongs on the same level of
