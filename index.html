@@ -1,3 +1,7 @@
+---
+published: true
+---
+
 <!DOCTYPE html>
 <html>
 
@@ -16,32 +20,61 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="repository_url}}">View on GitHub</a>
-
-          <h1 id="project_title">Slate</h1>
-          <h2 id="project_tagline">A responsive theme for GitHub Pages</h2>
-
-          <section id="downloads">
-            <a class="zip_download_link" href="#">Download this project as a .zip file</a>
-            <a class="tar_download_link" href="#">Download this project as a tar.gz file</a>
-          </section>
+          <h1 id="project_title">Iora Health</h1>
+          <h2 id="project_tagline">Ruby code style guide</h2>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>A simple, legible layout.</h3>
-        <p>Slate is a simple theme with a focus on content legibility and code styles. Use it for your documentation or your personal site to ensure that you're looking good across a range of devices and screen sizes.</p>
+      <h3><a href="#welcome">Welcome!</a></h3>
+        <p>
+        Greetings! I hope you have gathered here for some ruby coding
+        guidelines as there will be no pictures of cats on this particular
+        webpage.
+        </p>
+        <p>
+        These sets of guidelines are developed based upon our tastes at Iora
+        and are used to drive our internal development practices.  If they 
+        suit your needs as well then feel free to make them your own!
+        </p>
+        <p>
+        We have borrowed heavily from <a href="https://github.com/bbatsov/ruby-style-guide">https://github.com/bbatsov/ruby-style-guide</a>
+        as well as <a href="https://github.com/styleguide/ruby/">https://github.com/styleguide/ruby/</a>
+        and <a href="https://github.com/copycopter/style-guide">https://github.com/copycopter/style-guide</a>
+        in the creation of our own set of guidelines.
+        <p>
 
-        <p>Add your content here and get the ball rolling. If you want to generate your automatically page with the Slate theme, checkout <a href="http://pages.github.com">GitHub Pages</a>.</p>
+      <h3><a href="#boring-layout-basics">Boring Layout Basics</a></h3>
+        <ul>
+          <li>
+          Try to keep lines fewer than 80 characters.
+          </li>
+          <li>
+          Only use spaces.  Never use tabs.  We will publicly shame you if
+          your text editor is somehow set to use tabs as this is a problem a
+          machine can solve for you.
+          <ul>People who have broken the tabs policy:
+            <li>Matthew 'Conksy' Sisto</li>
+          </ul>
+          </li>
+          <li>
+          Use two spaces per indentation level.
+          {% include space_demonstration.md %}
+          </li>
+          <li>
+          Do not use spaces after <code>(</code>, <code>[</code> or before
+          <code>]</code>, <code>)</code>.
+          {% include no_spaces_for_parens.md %}
+          </li>
+        </ul>
       </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Slate theme maintained by <a href="https://github.com/jsncostello">Jason Costello</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
