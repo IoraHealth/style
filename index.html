@@ -72,6 +72,31 @@ published: true
             <code>]</code>, <code>)</code>.</p>
             {% include no_spaces_for_parens.md %}
           </li>
+          <li>
+          <p>Indent <code>when</code> one level deeper than <code>case</code>.
+             The <code>else</code> statement belongs on the same level of
+             indentation as <code>when</code>.
+          </p>
+            {% include case_when_indent.md %}
+          </li>
+          <li>
+          <p>Break up method definitions by putting blank lines between them.
+             Nobody likes a person that fails to break up paragaphs into separate
+             lines.  So don't be that guy.
+          </p>
+          {% include method_line_break.md %}
+          </li>
+          <li>
+          <p>Break up code inside methods into logical paragraphs.  Some
+             great opportunities for breaking up methods include:
+          </p>
+          <ul>
+            <li>Following a block of variable assignment</li>
+            <li>Following a multi-line block</li>
+            <li>Before a return statement</li>
+          </ul>
+          {% include logical_method_paragraphs.md %}
+          </li>
         </ul>
       </section>
     </div>

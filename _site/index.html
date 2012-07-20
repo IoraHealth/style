@@ -85,6 +85,83 @@
 
 
           </li>
+          <li>
+          <p>Indent <code>when</code> one level deeper than <code>case</code>.
+             The <code>else</code> statement belongs on the same level of
+             indentation as <code>when</code>.
+          </p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">case</span>
+  <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Misty&#39;</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Not again!&#39;</span>
+  <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">120</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Too long!&#39;</span>
+  <span class="k">when</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">21</span>
+    <span class="nb">puts</span> <span class="s2">&quot;It&#39;s too late&quot;</span>
+  <span class="k">else</span>
+    <span class="n">song</span><span class="o">.</span><span class="n">play</span>
+<span class="k">end</span>
+
+<span class="n">kind</span> <span class="o">=</span> <span class="k">case</span> <span class="n">year</span>
+         <span class="k">when</span> <span class="mi">1850</span><span class="o">.</span><span class="n">.</span><span class="mi">1889</span> <span class="k">then</span> <span class="s1">&#39;Blues&#39;</span>
+         <span class="k">when</span> <span class="mi">1890</span><span class="o">.</span><span class="n">.</span><span class="mi">1909</span> <span class="k">then</span> <span class="s1">&#39;Ragtime&#39;</span>
+         <span class="k">when</span> <span class="mi">1910</span><span class="o">.</span><span class="n">.</span><span class="mi">1929</span> <span class="k">then</span> <span class="s1">&#39;New Orleans Jazz&#39;</span>
+         <span class="k">when</span> <span class="mi">1930</span><span class="o">.</span><span class="n">.</span><span class="mi">1939</span> <span class="k">then</span> <span class="s1">&#39;Swing&#39;</span>
+         <span class="k">when</span> <span class="mi">1940</span><span class="o">.</span><span class="n">.</span><span class="mi">1950</span> <span class="k">then</span> <span class="s1">&#39;Bebop&#39;</span>
+         <span class="k">else</span> <span class="s1">&#39;Jazz&#39;</span>
+       <span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+          <p>Break up method definitions by putting blank lines between them.
+             Nobody likes a person that fails to break up paragaphs into separate
+             lines.  So don't be that guy.
+          </p>
+          <div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">four_score</span>
+  <span class="n">talk_forever</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">seven_years_ago</span>
+  <span class="n">do_not_get_shot</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+          <p>Break up code inside methods into logical paragraphs.  Some
+             great opportunities for breaking up methods include:
+          </p>
+          <ul>
+            <li>Following a block of variable assignment</li>
+            <li>Following a multi-line block</li>
+            <li>Before a return statement</li>
+          </ul>
+          <div class="highlight"><pre><code class="ruby"><span class="c1"># vertical space following variable assignment</span>
+<span class="k">def</span> <span class="nf">allowed_in_restaurant?</span>
+  <span class="n">shirt</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="n">pants</span> <span class="o">=</span> <span class="kp">false</span>
+  <span class="n">shoes</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="n">shirt</span> <span class="o">&amp;&amp;</span> <span class="n">pants</span> <span class="o">&amp;&amp;</span> <span class="n">shoes</span>
+<span class="k">end</span>
+
+<span class="c1"># vertical space following multi-line block</span>
+<span class="k">def</span> <span class="nf">rock</span>
+  <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">12</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">hour</span><span class="o">|</span>
+    <span class="n">ready_to_rock?</span>
+ <span class="k">end</span>
+
+ <span class="n">rock_around_the_clock_tonight</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
         </ul>
       </section>
     </div>
