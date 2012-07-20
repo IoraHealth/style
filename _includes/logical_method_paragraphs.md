@@ -12,8 +12,8 @@ end
 def rock
   1..12.each do |hour|
     ready_to_rock?
- end
+  end
 
- rock_around_the_clock_tonight
+  rock_around_the_clock_tonight
 end
 {% endhighlight %}
