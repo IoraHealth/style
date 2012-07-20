@@ -191,15 +191,11 @@ blockquote {
 
 ul, ol, dl {
   margin-bottom: 15px;
+  margin-left: 20px;
 }
 
 ul li {
   list-style: outside;
-}
-
-ul li ul li {
-  list-style: square inside;
-  margin-left: 10px;
 }
 
 ol li {
