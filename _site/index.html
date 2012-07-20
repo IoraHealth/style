@@ -17,7 +17,7 @@
     <div id="header_wrap" class="outer">
         <header class="inner">
           <h1 id="project_title">Iora Health</h1>
-          <h2 id="project_tagline">Ruby code style guide</h2>
+          <h2 id="project_tagline">Ruby coding guidelines</h2>
         </header>
     </div>
 
@@ -36,7 +36,7 @@
         and <a href="https://github.com/copycopter/style-guide">https://github.com/copycopter/style-guide</a>
         in the creation of our own set of guidelines.<p>
 
-      <h3><a href="#boring-layout-basics">Boring Layout Basics</a></h3>
+      <h3><a href="#spacing">Layout and Spacing</a></h3>
         <ul>
           <li>
             <p>Try to keep lines fewer than 80 characters.</p>
@@ -88,34 +88,6 @@
 </div>
 
 
-          <li>
-            <p>Indent <code>when</code> one level deeper than <code>case</code>.
-            The <code>else</code> statement belongs on the same level of
-            indentation as <code>when</code>.</p>
-            <div class="highlight"><pre><code class="ruby"><span class="k">case</span>
-  <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Misty&#39;</span>
-    <span class="nb">puts</span> <span class="s1">&#39;Not again!&#39;</span>
-  <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">120</span>
-    <span class="nb">puts</span> <span class="s1">&#39;Too long!&#39;</span>
-  <span class="k">when</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">21</span>
-    <span class="nb">puts</span> <span class="s2">&quot;It&#39;s too late&quot;</span>
-  <span class="k">else</span>
-    <span class="n">song</span><span class="o">.</span><span class="n">play</span>
-<span class="k">end</span>
-
-<span class="n">kind</span> <span class="o">=</span> <span class="k">case</span> <span class="n">year</span>
-         <span class="k">when</span> <span class="mi">1850</span><span class="o">.</span><span class="n">.</span><span class="mi">1889</span> <span class="k">then</span> <span class="s1">&#39;Blues&#39;</span>
-         <span class="k">when</span> <span class="mi">1890</span><span class="o">.</span><span class="n">.</span><span class="mi">1909</span> <span class="k">then</span> <span class="s1">&#39;Ragtime&#39;</span>
-         <span class="k">when</span> <span class="mi">1910</span><span class="o">.</span><span class="n">.</span><span class="mi">1929</span> <span class="k">then</span> <span class="s1">&#39;New Orleans Jazz&#39;</span>
-         <span class="k">when</span> <span class="mi">1930</span><span class="o">.</span><span class="n">.</span><span class="mi">1939</span> <span class="k">then</span> <span class="s1">&#39;Swing&#39;</span>
-         <span class="k">when</span> <span class="mi">1940</span><span class="o">.</span><span class="n">.</span><span class="mi">1950</span> <span class="k">then</span> <span class="s1">&#39;Bebop&#39;</span>
-         <span class="k">else</span> <span class="s1">&#39;Jazz&#39;</span>
-       <span class="k">end</span>
-</code></pre>
-</div>
-
-
-          </li>
         </ul>
       <h3><a href="#methods">Methods</a></h3>
         <ul>
@@ -214,6 +186,83 @@
             definition and the parenthesis; I question your sanity for doing
             so.</p>
             <div class="highlight"><pre><code class="ruby"><span class="n">hiring_mistake</span> <span class="p">(</span><span class="kp">true</span><span class="p">)</span> <span class="c1"># This is self documenting code at its best</span>
+</code></pre>
+</div>
+
+
+          </li>
+        </ul>
+      <h3><a href="#language-trivia">Language Trivia</a></h3>
+        <p>Like any programming language, Ruby has both good and bad parts.  It
+        would not be a coding guideline document if we didn't go over the parts
+        of the language we should just flat out avoid in our day-to-day work.</p>
+        <ul>
+          <li>
+            <p>The <code>for</code> loop should be avoided at all costs. 
+            Internally it is implemented as an <code>each</code> loop but without
+            properly scoping the block variable.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">for</span> <span class="n">num</span> <span class="k">in</span> <span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">12</span><span class="o">]</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span>
+<span class="k">end</span>
+
+<span class="c1"># This is just plain wrong.</span>
+<span class="nb">puts</span> <span class="n">num</span> <span class="c1"># =&gt; 12</span>
+
+<span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">12</span><span class="o">].</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">num</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">}</span>
+
+<span class="nb">puts</span> <span class="n">num</span> <span class="c1"># =&gt; NoMethodError</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>The use of <code>then</code> is likely to happen when you think
+            you are writing coffescript code and not ruby.  We write a heck of
+            a lot of coffescript so I do not die on the inside when you use it.</p>
+            <p>There are are two failed casses when using <code>then</code>:</p>
+            <ul>
+              <li>On ending a multiline <code>if</code> statement</li>
+              <div class="highlight"><pre><code class="ruby"><span class="k">if</span> <span class="n">party_time?</span> <span class="k">then</span>
+  <span class="c1"># IT ISNT PARTY TIME BECAUSE I HAVE ENDED YOU</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+              <li>As a verbose ternary operator</li>
+              <div class="highlight"><pre><code class="ruby"><span class="k">if</span> <span class="n">coffeescript?</span> <span class="k">then</span> <span class="sr">/*it isn&#39;t jerk*/</span> <span class="k">else</span> <span class="nb">puts</span> <span class="s2">&quot;ruh-roh&quot;</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+
+            </ul>
+            <p>In the former case you've written an unecessary statement.  In
+            the latter case you are wasting all of our time because people that
+            made coffeescript were too lazy to write a proper ternary operator.</p>
+          <li>
+            <p>Indent <code>when</code> one level deeper than <code>case</code>.
+            The <code>else</code> statement belongs on the same level of
+            indentation as <code>when</code>.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">case</span>
+  <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Misty&#39;</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Not again!&#39;</span>
+  <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">120</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Too long!&#39;</span>
+  <span class="k">when</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">21</span>
+    <span class="nb">puts</span> <span class="s2">&quot;It&#39;s too late&quot;</span>
+  <span class="k">else</span>
+    <span class="n">song</span><span class="o">.</span><span class="n">play</span>
+<span class="k">end</span>
+
+<span class="n">kind</span> <span class="o">=</span> <span class="k">case</span> <span class="n">year</span>
+         <span class="k">when</span> <span class="mi">1850</span><span class="o">.</span><span class="n">.</span><span class="mi">1889</span> <span class="k">then</span> <span class="s1">&#39;Blues&#39;</span>
+         <span class="k">when</span> <span class="mi">1890</span><span class="o">.</span><span class="n">.</span><span class="mi">1909</span> <span class="k">then</span> <span class="s1">&#39;Ragtime&#39;</span>
+         <span class="k">when</span> <span class="mi">1910</span><span class="o">.</span><span class="n">.</span><span class="mi">1929</span> <span class="k">then</span> <span class="s1">&#39;New Orleans Jazz&#39;</span>
+         <span class="k">when</span> <span class="mi">1930</span><span class="o">.</span><span class="n">.</span><span class="mi">1939</span> <span class="k">then</span> <span class="s1">&#39;Swing&#39;</span>
+         <span class="k">when</span> <span class="mi">1940</span><span class="o">.</span><span class="n">.</span><span class="mi">1950</span> <span class="k">then</span> <span class="s1">&#39;Bebop&#39;</span>
+         <span class="k">else</span> <span class="s1">&#39;Jazz&#39;</span>
+       <span class="k">end</span>
 </code></pre>
 </div>
 
