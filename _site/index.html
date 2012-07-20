@@ -25,22 +25,16 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
       <h3><a href="#welcome">Welcome!</a></h3>
-        <p>
-        Greetings! I hope you have gathered here for some ruby coding
+        <p>Greetings! I hope you have gathered here for some ruby coding
         guidelines as there will be no pictures of cats on this particular
-        webpage.
-        </p>
-        <p>
-        These sets of guidelines are developed based upon our tastes at Iora
+        webpage.</p>
+        <p>These sets of guidelines are developed based upon our tastes at Iora
         and are used to drive our internal development practices.  If they 
-        suit your needs as well then feel free to make them your own!
-        </p>
-        <p>
-        We have borrowed heavily from <a href="https://github.com/bbatsov/ruby-style-guide">https://github.com/bbatsov/ruby-style-guide</a>
+        suit your needs as well then feel free to make them your own!</p>
+        <p>We have borrowed heavily from <a href="https://github.com/bbatsov/ruby-style-guide">https://github.com/bbatsov/ruby-style-guide</a>
         as well as <a href="https://github.com/styleguide/ruby/">https://github.com/styleguide/ruby/</a>
         and <a href="https://github.com/copycopter/style-guide">https://github.com/copycopter/style-guide</a>
-        in the creation of our own set of guidelines.
-        <p>
+        in the creation of our own set of guidelines.<p>
 
       <h3><a href="#boring-layout-basics">Boring Layout Basics</a></h3>
         <ul>
@@ -50,14 +44,12 @@
           <li>
             <p>Never, ever leave trailing whitespace.  Let a machine help you
                in this endeavor by setting your text editor to be obnoxious when
-               you leave trailing whitespace.
-            </p>
+               you leave trailing whitespace.</p>
           </li>
           <li>
             <p>Only use spaces.  Never use tabs.  We will publicly shame you if
             your text editor is somehow set to use tabs as this is a problem a
-            machine can solve for you.
-            </p>
+            machine can solve for you.</p>
             <p>Here are people who have abused the tab policy thus far:</p>
             <ul>
               <li>Matthew 'Conksy' Sisto</li>
@@ -90,10 +82,9 @@
 
           </li>
           <li>
-          <p>Indent <code>when</code> one level deeper than <code>case</code>.
-             The <code>else</code> statement belongs on the same level of
-             indentation as <code>when</code>.
-          </p>
+            <p>Indent <code>when</code> one level deeper than <code>case</code>.
+            The <code>else</code> statement belongs on the same level of
+            indentation as <code>when</code>.</p>
             <div class="highlight"><pre><code class="ruby"><span class="k">case</span>
   <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Misty&#39;</span>
     <span class="nb">puts</span> <span class="s1">&#39;Not again!&#39;</span>
@@ -137,11 +128,11 @@
 
           </li>
           <li>
-          <p>Break up method definitions by putting blank lines between them.
-             Nobody likes a person that fails to break up paragaphs into separate
-             lines.  So don't be that guy.
-          </p>
-          <div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">four_score</span>
+            <p>Break up method definitions by putting blank lines between them.
+               Nobody likes a person that fails to break up paragaphs into separate
+               lines.  So don't be that guy.
+            </p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">four_score</span>
   <span class="n">talk_forever</span>
 <span class="k">end</span>
 
@@ -154,15 +145,14 @@
 
           </li>
           <li>
-          <p>Break up code inside methods into logical paragraphs.  Some
-             great opportunities for breaking up methods include:
-          </p>
-          <ul>
-            <li>Following a block of variable assignment</li>
-            <li>Following a multi-line block</li>
-            <li>Before a return statement</li>
-          </ul>
-          <div class="highlight"><pre><code class="ruby"><span class="c1"># vertical space following variable assignment</span>
+            <p>Break up code inside methods into logical paragraphs.  Some
+               great opportunities for breaking up methods include:</p>
+            <ul>
+              <li>Following a block of variable assignment</li>
+              <li>Following a multi-line block</li>
+              <li>Before a return statement</li>
+            </ul>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># vertical space following variable assignment</span>
 <span class="k">def</span> <span class="nf">allowed_in_restaurant?</span>
   <span class="n">shirt</span> <span class="o">=</span> <span class="kp">true</span>
   <span class="n">pants</span> <span class="o">=</span> <span class="kp">false</span>
@@ -195,6 +185,28 @@
 <span class="k">def</span> <span class="nf">sexy_and_i_know_it</span>
   <span class="kp">true</span>
 <span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>Put a space around the default value operator <code>=</code> on
+            method definitions.  You put spaces around it everywhere else so it
+            only makes sense to do so here!</p>
+            <div class="highlight"><pre><code class="ruby">  <span class="k">def</span> <span class="nf">mix_old_fashioned</span><span class="p">(</span><span class="n">booze</span> <span class="o">=</span> <span class="ss">:rye</span><span class="p">,</span> <span class="n">fruit</span> <span class="o">=</span> <span class="ss">:orange</span><span class="p">)</span>
+    <span class="n">shake_it_like_a_polaroid</span>
+  <span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>While it is possible to place a space between the method
+            definition and the parenthesis; I question your sanity for doing
+            so.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="n">hiring_mistake</span> <span class="p">(</span><span class="kp">true</span><span class="p">)</span> <span class="c1"># This is self documenting code at its best</span>
 </code></pre>
 </div>
 
