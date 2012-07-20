@@ -184,6 +184,22 @@
 
 
           </li>
+          <li>
+            <p>Avoid using <code>return</code> unless you absolutely have to.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># superfluous return statement and method in general</span>
+<span class="k">def</span> <span class="nf">sexy_and_i_know_it</span>
+  <span class="k">return</span> <span class="kp">true</span>
+<span class="k">end</span>
+
+<span class="c1"># now only a superfluous method</span>
+<span class="k">def</span> <span class="nf">sexy_and_i_know_it</span>
+  <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
         </ul>
       </section>
     </div>
