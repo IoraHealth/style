@@ -71,6 +71,23 @@ published: true
           <li>
             <p>Do use spaces after <code>{</code> and before <code>}</code>.</p>
             {% include code_block_spaces.md %}
+          </li>
+          <li>
+            <p>Break up code inside into logical paragraphs.  Some
+               great opportunities for breaking up code includes:</p>
+            <ul>
+              <li>Following a block of variable assignment</li>
+              <li>Following a multi-line block</li>
+              <li>Before a return statement</li>
+            </ul>
+            {% include logical_method_paragraphs.md %}
+          </li>
+          <li>
+            <p>We have an obsessive need to vertically align assignment
+            statements.  This provides greater clarity and increases the chances
+            that Uncle Bob will be our friend some day.</p>
+            {% include vertical_alignment.md %}
+          </li>
         </ul>
       <h3><a href="#methods">Methods</a></h3>
         <ul>
@@ -85,16 +102,6 @@ published: true
                lines.  So don't be that guy.
             </p>
             {% include method_line_break.md %}
-          </li>
-          <li>
-            <p>Break up code inside methods into logical paragraphs.  Some
-               great opportunities for breaking up methods include:</p>
-            <ul>
-              <li>Following a block of variable assignment</li>
-              <li>Following a multi-line block</li>
-              <li>Before a return statement</li>
-            </ul>
-            {% include logical_method_paragraphs.md %}
           </li>
           <li>
             <p>Avoid using <code>return</code> unless you absolutely have to.</p>

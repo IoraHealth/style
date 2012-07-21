@@ -88,6 +88,52 @@
 </div>
 
 
+          </li>
+          <li>
+            <p>Break up code inside into logical paragraphs.  Some
+               great opportunities for breaking up code includes:</p>
+            <ul>
+              <li>Following a block of variable assignment</li>
+              <li>Following a multi-line block</li>
+              <li>Before a return statement</li>
+            </ul>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># vertical space following variable assignment</span>
+<span class="k">def</span> <span class="nf">allowed_in_restaurant?</span>
+  <span class="n">shirt</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="n">pants</span> <span class="o">=</span> <span class="kp">false</span>
+  <span class="n">shoes</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="n">shirt</span> <span class="o">&amp;&amp;</span> <span class="n">pants</span> <span class="o">&amp;&amp;</span> <span class="n">shoes</span>
+<span class="k">end</span>
+
+<span class="c1"># vertical space following multi-line block</span>
+<span class="k">def</span> <span class="nf">rock</span>
+  <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">12</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">hour</span><span class="o">|</span>
+    <span class="n">ready_to_rock?</span>
+  <span class="k">end</span>
+
+  <span class="n">rock_around_the_clock_tonight</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>We have an obsessive need to vertically align assignment
+            statements.  This provides greater clarity and increases the chances
+            that Uncle Bob will be our friend some day.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">format_party_time</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span>
+  <span class="n">start_hour</span> <span class="o">=</span> <span class="n">start_time</span><span class="o">.</span><span class="n">strftime</span> <span class="s1">&#39;%h&#39;</span>
+  <span class="n">end_hour</span>   <span class="o">=</span> <span class="n">end_time</span><span class="o">.</span><span class="n">strftime</span> <span class="s1">&#39;%h&#39;</span>
+
+  <span class="c1"># Calculate party things here.</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
         </ul>
       <h3><a href="#methods">Methods</a></h3>
         <ul>
@@ -117,36 +163,6 @@
 
 <span class="k">def</span> <span class="nf">seven_years_ago</span>
   <span class="n">do_not_get_shot</span>
-<span class="k">end</span>
-</code></pre>
-</div>
-
-
-          </li>
-          <li>
-            <p>Break up code inside methods into logical paragraphs.  Some
-               great opportunities for breaking up methods include:</p>
-            <ul>
-              <li>Following a block of variable assignment</li>
-              <li>Following a multi-line block</li>
-              <li>Before a return statement</li>
-            </ul>
-            <div class="highlight"><pre><code class="ruby"><span class="c1"># vertical space following variable assignment</span>
-<span class="k">def</span> <span class="nf">allowed_in_restaurant?</span>
-  <span class="n">shirt</span> <span class="o">=</span> <span class="kp">true</span>
-  <span class="n">pants</span> <span class="o">=</span> <span class="kp">false</span>
-  <span class="n">shoes</span> <span class="o">=</span> <span class="kp">true</span>
-
-  <span class="n">shirt</span> <span class="o">&amp;&amp;</span> <span class="n">pants</span> <span class="o">&amp;&amp;</span> <span class="n">shoes</span>
-<span class="k">end</span>
-
-<span class="c1"># vertical space following multi-line block</span>
-<span class="k">def</span> <span class="nf">rock</span>
-  <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">12</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">hour</span><span class="o">|</span>
-    <span class="n">ready_to_rock?</span>
-  <span class="k">end</span>
-
-  <span class="n">rock_around_the_clock_tonight</span>
 <span class="k">end</span>
 </code></pre>
 </div>
