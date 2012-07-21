@@ -360,6 +360,56 @@
 
 
           </li>
+          <li>
+            <p>Pairing <code>unless</code> with an <code>else</code> is bad
+            news bears.  It's possible to swap the statement into an <code>if</code>
+            /<code>else</code> by reversing the order of the conditionals and it
+            prevents our minds from melting.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># The priorities here seem to be all wrong</span>
+<span class="k">unless</span> <span class="n">party_time?</span>
+  <span class="n">listen_to_jazz_music</span>
+<span class="k">else</span>
+  <span class="n">rock_out_with_reckless_abandon</span>
+<span class="k">end</span>
+
+<span class="c1"># Company culture upheld!!!</span>
+<span class="k">if</span> <span class="n">party_time?</span>
+  <span class="n">rock_out_with_reckless_abandon</span>
+<span class="k">else</span>
+  <span class="n">listen_to_jazz_music</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+            <p><code>unless</code> is used to clarify exceptional cases.  When
+            there is both a positive and negative case it loses all clarity. As
+            a company we want to hear the good news before the bad news in our 
+            conditional statements.</p>
+          </li>
+          <li>
+            <p>It is rather possible to assign values in if statements.  Where
+            it starts going downhill though is that <code>=</code> is one
+            keystroke away from <code>==</code> and the intent of the code is
+            not easily gleaned without a deeper code dive.</p>
+
+            <p>In order to alleviate this burden upon the future reader of your
+            code it is best to encapsulate assignment within an if statement
+            with parenthesis.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># Checking equality</span>
+<span class="k">if</span> <span class="n">pants_off_dance_off</span> <span class="o">==</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+  <span class="n">take_pants_off</span>
+<span class="k">end</span>
+
+<span class="c1"># Assigning a value</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pants_off_dance_off</span> <span class="o">=</span> <span class="no">Party</span><span class="o">.</span><span class="n">party_o_clock</span><span class="p">)</span>
+  <span class="no">PartyQueue</span><span class="o">.</span><span class="n">enqueue</span> <span class="n">pants_off_dance_off</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
         </ul>
       </section>
     </div>

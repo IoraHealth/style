@@ -179,6 +179,28 @@ published: true
             indentation as <code>when</code> and <code>case</code>.</p>
             {% include case_when_indent.md %}
           </li>
+          <li>
+            <p>Pairing <code>unless</code> with an <code>else</code> is bad
+            news bears.  It's possible to swap the statement into an <code>if</code>
+            /<code>else</code> by reversing the order of the conditionals and it
+            prevents our minds from melting.</p>
+            {% include unless_else.md %}
+            <p><code>unless</code> is used to clarify exceptional cases.  When
+            there is both a positive and negative case it loses all clarity. As
+            a company we want to hear the good news before the bad news in our 
+            conditional statements.</p>
+          </li>
+          <li>
+            <p>It is rather possible to assign values in if statements.  Where
+            it starts going downhill though is that <code>=</code> is one
+            keystroke away from <code>==</code> and the intent of the code is
+            not easily gleaned without a deeper code dive.</p>
+
+            <p>In order to alleviate this burden upon the future reader of your
+            code it is best to encapsulate assignment within an if statement
+            with parenthesis.</p>
+            {% include if_assignment.md %}
+          </li>
         </ul>
       </section>
     </div>
