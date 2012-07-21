@@ -333,27 +333,27 @@
 
 
           <li>
-            <p>Indent <code>when</code> one level deeper than <code>case</code>.
+            <p>Indent <code>when</code> at the same level as <code>case</code>.
             The <code>else</code> statement belongs on the same level of
-            indentation as <code>when</code>.</p>
+            indentation as <code>when</code> and <code>case</code>.</p>
             <div class="highlight"><pre><code class="ruby"><span class="k">case</span>
-  <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Misty&#39;</span>
-    <span class="nb">puts</span> <span class="s1">&#39;Not again!&#39;</span>
-  <span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">120</span>
-    <span class="nb">puts</span> <span class="s1">&#39;Too long!&#39;</span>
-  <span class="k">when</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">21</span>
-    <span class="nb">puts</span> <span class="s2">&quot;It&#39;s too late&quot;</span>
-  <span class="k">else</span>
-    <span class="n">song</span><span class="o">.</span><span class="n">play</span>
+<span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Misty&#39;</span>
+  <span class="nb">puts</span> <span class="s1">&#39;Not again!&#39;</span>
+<span class="k">when</span> <span class="n">song</span><span class="o">.</span><span class="n">duration</span> <span class="o">&gt;</span> <span class="mi">120</span>
+  <span class="nb">puts</span> <span class="s1">&#39;Too long!&#39;</span>
+<span class="k">when</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">21</span>
+  <span class="nb">puts</span> <span class="s2">&quot;It&#39;s too late&quot;</span>
+<span class="k">else</span>
+  <span class="n">song</span><span class="o">.</span><span class="n">play</span>
 <span class="k">end</span>
 
 <span class="n">kind</span> <span class="o">=</span> <span class="k">case</span> <span class="n">year</span>
-         <span class="k">when</span> <span class="mi">1850</span><span class="o">.</span><span class="n">.</span><span class="mi">1889</span> <span class="k">then</span> <span class="s1">&#39;Blues&#39;</span>
-         <span class="k">when</span> <span class="mi">1890</span><span class="o">.</span><span class="n">.</span><span class="mi">1909</span> <span class="k">then</span> <span class="s1">&#39;Ragtime&#39;</span>
-         <span class="k">when</span> <span class="mi">1910</span><span class="o">.</span><span class="n">.</span><span class="mi">1929</span> <span class="k">then</span> <span class="s1">&#39;New Orleans Jazz&#39;</span>
-         <span class="k">when</span> <span class="mi">1930</span><span class="o">.</span><span class="n">.</span><span class="mi">1939</span> <span class="k">then</span> <span class="s1">&#39;Swing&#39;</span>
-         <span class="k">when</span> <span class="mi">1940</span><span class="o">.</span><span class="n">.</span><span class="mi">1950</span> <span class="k">then</span> <span class="s1">&#39;Bebop&#39;</span>
-         <span class="k">else</span> <span class="s1">&#39;Jazz&#39;</span>
+       <span class="k">when</span> <span class="mi">1850</span><span class="o">.</span><span class="n">.</span><span class="mi">1889</span> <span class="k">then</span> <span class="s1">&#39;Blues&#39;</span>
+       <span class="k">when</span> <span class="mi">1890</span><span class="o">.</span><span class="n">.</span><span class="mi">1909</span> <span class="k">then</span> <span class="s1">&#39;Ragtime&#39;</span>
+       <span class="k">when</span> <span class="mi">1910</span><span class="o">.</span><span class="n">.</span><span class="mi">1929</span> <span class="k">then</span> <span class="s1">&#39;New Orleans Jazz&#39;</span>
+       <span class="k">when</span> <span class="mi">1930</span><span class="o">.</span><span class="n">.</span><span class="mi">1939</span> <span class="k">then</span> <span class="s1">&#39;Swing&#39;</span>
+       <span class="k">when</span> <span class="mi">1940</span><span class="o">.</span><span class="n">.</span><span class="mi">1950</span> <span class="k">then</span> <span class="s1">&#39;Bebop&#39;</span>
+       <span class="k">else</span> <span class="s1">&#39;Jazz&#39;</span>
        <span class="k">end</span>
 </code></pre>
 </div>
