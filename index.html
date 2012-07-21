@@ -126,6 +126,22 @@ published: true
             so.</p>
             {% include space_method_invocation.md %}
           </li>
+          <li>
+            <p>Using parenthesis on method invocations is highly contested. The
+            issue is that building hard and fast rules around when to use them
+            and when exclusion is a solid policy is largely a matter of 
+            rearranging the deck chairs on the Titanic.</p>
+            <p>If it feels acceptable to omit the parenthesis, feel free to do
+            so.  If the code is more readable with them please include them.
+            With that said, here are some general guidelines:</p>
+            <ul>
+              <li>When using a DSL with its own style guideline (RSpec) use
+              their preferred style</li>
+              {% include rspec_parens.md %}
+              <li>When assigning variables, always include parenthesis</li>
+              {% include assignment_parens.md %}
+            </ul>
+          </li>
         </ul>
       <h3><a href="#language-trivia">Language Trivia</a></h3>
         <p>Like any programming language, Ruby has both good and bad parts.  It
