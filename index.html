@@ -99,7 +99,23 @@ published: true
       <h3><a href="#methods">Methods</a></h3>
         <ul>
           <li>
-            <p>Parathensis are only used on <code>def</code> statements that have
+            <p>Methods should 'do one thing™'.  We believe methods that limit
+            themselves to doing exactly one thing at a consistent level of
+            abstraction leads to more readable and maintainable code.  Some
+            general guidelines to encourage methods to do only one thing include:</p>
+            <ul>
+              <li>Limit methods to at most 8 lines of executable code.</li>
+              <li>Limit the number of parameters passed into the method to at 
+              most 3.</li>
+              <li>Avoid passing in an 'options' hash.  This usually ends up
+              violating the above point.</li>
+              <li>Prefer to pass in objects over ids.  The notable exception to
+              this guideline is when you need to marshal the parameters.</li>
+              <li>Limit the number of execution paths to be as simple as possible.</li>
+            </ul>
+          </li>
+          <li>
+            <p>Parenthesis are only used on <code>def</code> statements that have
             parameters.</p>
             {% include def_parens.md %}
           </li>
