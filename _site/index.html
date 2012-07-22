@@ -146,6 +146,45 @@
 
           </li>
         </ul>
+      <h3><a href="#naming">Naming</a></h3>
+        <ul>
+          <li>
+            <p>Use <code>snake_case</code> for methods and variables.</p>
+          </li>
+          <li>
+            <p>Use <code>CamelCase</code> for classes and modules.  Do not keep
+            acronyms fully uppercase. ie <code>IpTables</code>.</p>
+          </li>
+          <li><p>Use <code>SCREAMING_SNAKE_CASE</code> for constants.</p></li>
+          <li>
+            <p>Ruby allows the use of <code>?</code> in method names so use it
+            whenever the method returns a <code>boolean</code> value.</p>
+          </li>
+          <li>
+            <p>Use <code>!</code> to indicate a method performs a dangerous 
+            action.  When you define a dangerous method, you must also define
+            one that is 'safe' as well.  Typically you should define the 
+            'safe' method in relation to the dangerous one:</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Array</span>
+  <span class="k">def</span> <span class="nf">flatten_once!</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="o">[]</span>
+    <span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
+      <span class="o">[*</span><span class="n">e</span><span class="o">].</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">res</span> <span class="o">&lt;&lt;</span> <span class="n">f</span> <span class="p">}</span>
+    <span class="k">end</span>
+    <span class="n">replace</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">flatten_once</span>
+    <span class="nb">dup</span><span class="o">.</span><span class="n">flatten_once!</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+            <p>Code above hoisted from <a href="http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist">David A Black</a>.</p>
+          </li>
+        </ul>
       <h3><a href="#methods">Methods</a></h3>
         <ul>
           <li>

@@ -96,6 +96,29 @@ published: true
             {% include multiple_assignment.md %}
           </li>
         </ul>
+      <h3><a href="#naming">Naming</a></h3>
+        <ul>
+          <li>
+            <p>Use <code>snake_case</code> for methods and variables.</p>
+          </li>
+          <li>
+            <p>Use <code>CamelCase</code> for classes and modules.  Do not keep
+            acronyms fully uppercase. ie <code>IpTables</code>.</p>
+          </li>
+          <li><p>Use <code>SCREAMING_SNAKE_CASE</code> for constants.</p></li>
+          <li>
+            <p>Ruby allows the use of <code>?</code> in method names so use it
+            whenever the method returns a <code>boolean</code> value.</p>
+          </li>
+          <li>
+            <p>Use <code>!</code> to indicate a method performs a dangerous 
+            action.  When you define a dangerous method, you must also define
+            one that is 'safe' as well.  Typically you should define the 
+            'safe' method in relation to the dangerous one:</p>
+            {% include bang_method.md %}
+            <p>Code above hoisted from <a href="http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist">David A Black</a>.</p>
+          </li>
+        </ul>
       <h3><a href="#methods">Methods</a></h3>
         <ul>
           <li>
