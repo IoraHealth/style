@@ -185,6 +185,15 @@ published: true
       <h3><a href="#classes">Classes</a></h3>
         <ul>
           <li>
+            <p>The usage of class variables (<code>@@</code>) is highly
+            discouraged.  Why you ask?  Because when you choose inheritence
+            all classes within the hierarchy share the same variable.  Most
+            of the time you wouldn't expect that behavior.</p>
+            {% include class_variables.md %}
+            <p>But how can we set class attributes?  Instead create
+            <code>attr_reader</code>, <code>attr_writter</code>, 
+            <code>attr_accessor</code> methods on the class level like so:</p>
+            {% include class_attr.md %}
           </li>
         </ul>
       <h3><a href="#conditionals">Conditionals</a></h3>

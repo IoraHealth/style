@@ -302,6 +302,51 @@
       <h3><a href="#classes">Classes</a></h3>
         <ul>
           <li>
+            <p>The usage of class variables (<code>@@</code>) is highly
+            discouraged.  Why you ask?  Because when you choose inheritence
+            all classes within the hierarchy share the same variable.  Most
+            of the time you wouldn't expect that behavior.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Cat</span>
+  <span class="vc">@@capable_of_purring</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">purr</span>
+    <span class="nb">puts</span> <span class="s2">&quot;prrrrrrrrrr&quot;</span> <span class="k">if</span> <span class="vc">@@capable_of_purring</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Lion</span> <span class="o">&lt;</span> <span class="no">Cat</span>
+  <span class="vc">@@capable_of_purring</span> <span class="o">=</span> <span class="kp">false</span>
+<span class="k">end</span>
+
+<span class="no">Cat</span><span class="o">.</span><span class="n">purr</span> <span class="c1"># =&gt; prints nothing :(</span>
+</code></pre>
+</div>
+
+
+            <p>But how can we set class attributes?  Instead create
+            <code>attr_reader</code>, <code>attr_writter</code>, 
+            <code>attr_accessor</code> methods on the class level like so:</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Cat</span>
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+    <span class="kp">attr_reader</span> <span class="ss">:capable_of_purring</span>
+  <span class="k">end</span>
+  <span class="vi">@capable_of_purring</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="k">def</span> <span class="nf">purr</span>
+    <span class="n">pust</span> <span class="s2">&quot;prrrrr&quot;</span> <span class="k">if</span> <span class="vi">@capable_of_purring</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Lion</span> <span class="o">&lt;</span> <span class="no">Cat</span>
+  <span class="vi">@capable_of_purring</span> <span class="o">=</span> <span class="kp">false</span>
+<span class="k">end</span>
+
+<span class="no">Cat</span><span class="o">.</span><span class="n">purr</span> <span class="c1"># =&gt; &quot;prrrr&quot;</span>
+<span class="no">Lion</span><span class="o">.</span><span class="n">purr</span> <span class="c1"># =&gt; outputs nothing! yay.</span>
+</code></pre>
+</div>
+
+
           </li>
         </ul>
       <h3><a href="#conditionals">Conditionals</a></h3>
