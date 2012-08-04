@@ -366,6 +366,82 @@
             <p>We would love it if every class you wrote was <a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLID</a>.</p>
           </li>
           <li>
+            <h6>Structuring Classes</h6>
+            <p>Life is really a lot easier for everyone on the development team
+            when we set up some common structure and ordering within classes.
+            I bet we even wrote a coding style guideline to make our lives
+            easier!</p>
+            <ul>
+              <li><p>If you need to include any modules inside your class, do
+              that first.</p></li>
+              <li><p><code>CONSTANTS</code> should appear next.</p></li>
+              <li><p><code>attr_reader</code>, <code>attr_writter</code>, and
+              <code>attr_accessor</code> statments should follow.</p></li>
+              <li>
+                <p>Next up are public methods.  The first public method you 
+                declare should always be <code>initialze</code>.  It is the
+                entry point for your class so that makes sense.</p>
+                <p>Following that, you should group methods together by usage.
+                If <code>foo</code> calls <code>baz</code> then <code>baz</code>
+                should be as close to <code>foo</code> as possible.</p>
+                <p>Methods should be ordered by how the class is intended to be
+                used.  Another developer should be able to read through the
+                method definitions of a class and get the gist of the classes
+                intention.</p>
+                <p>The notable exception to the above rules are class methods.
+                We should order them last within the public block.</p>
+              </li>
+              <li><p>The last section is for private methods.  They should
+              follow the above guidelines for private methods.</p></li>
+            </ul>
+            <p>Let's demonstrate all of the above with one big code block!</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Ninja</span>
+  <span class="kp">include</span> <span class="no">SilentWarrior</span>
+
+  <span class="no">ROCK_HARD_AWESOME</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="kp">attr_accessor</span> <span class="ss">:weapon</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">weapon</span><span class="p">)</span>
+    <span class="vi">@weapon</span> <span class="o">=</span> <span class="n">weapon</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">sneak_attack</span>
+    <span class="k">case</span> <span class="vi">@weapon</span>
+    <span class="k">when</span> <span class="no">ThrowingStar</span>
+      <span class="n">attack_with_throwing_star</span>
+    <span class="k">else</span>
+      <span class="n">flip_out_and_stuff</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">attack_with_throwing_star</span>
+    <span class="s2">&quot;YOU&#39;VE BEEN NINJADDDDDD&quot;</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">flip_out_and_stuff</span>
+    <span class="s2">&quot;YOU HAVE ALSO BEEN NINJADDDDD&quot;</span>
+    <span class="n">disappear_into_darkness</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">create_with_throwing_star</span><span class="p">(</span><span class="n">throwing_star_name</span> <span class="o">=</span> <span class="s1">&#39;Pinkie Pie&#39;</span><span class="p">)</span>
+    <span class="n">weapon</span> <span class="o">=</span> <span class="no">ThrowingStar</span> <span class="nb">name</span><span class="p">:</span> <span class="n">throwing_star_name</span>
+
+    <span class="no">Ninja</span><span class="o">.</span><span class="n">new</span> <span class="n">weapon</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+  <span class="k">def</span> <span class="nf">disappear_into_darkness</span>
+    <span class="n">throw_powder</span> <span class="c1">#implemented in SilentWarrior</span>
+    <span class="s2">&quot;LOLOLOLOL INVISIBLE&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
             <p>The usage of class variables (<code>@@</code>) is highly
             discouraged.  Why you ask?  Because when you choose inheritence
             all classes within the hierarchy share the same variable.  Most
