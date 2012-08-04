@@ -763,6 +763,28 @@
 
           </li>
         </ul>
+      <h3><a href="#collections">Collections</a></h3>
+        <ul>
+          <li><p>The <code>%w</code> is at least 20% cooler than the literal
+          array syntax when creating an array of Strings.  Use it accordingly.</p></li>
+          <div class="highlight"><pre><code class="ruby"><span class="c1"># Pretty lame</span>
+<span class="no">PONIES</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Applejack&#39;</span><span class="p">,</span> <span class="s1">&#39;Fluttershy&#39;</span><span class="p">,</span> <span class="s1">&#39;Rarity&#39;</span><span class="o">]</span>
+
+<span class="c1"># 20% cooler</span>
+<span class="no">PONIES</span> <span class="o">=</span> <span class="sx">%w(Applejack Fluttershy Rarity)</span>
+</code></pre>
+</div>
+
+
+          <li><p>Use symbols over strings as hash keys.  The <code>=></code> is
+          dead to me.</p></li>
+          <div class="highlight"><pre><code class="ruby"><span class="c1"># so stylish</span>
+<span class="n">ninja</span> <span class="o">=</span> <span class="p">{</span> <span class="n">weapon</span><span class="p">:</span> <span class="s1">&#39;throwing star&#39;</span><span class="p">,</span> <span class="n">silent</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="n">pirate</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+
+        </ul>
       <h3><a href="#language-trivia">Language Trivia</a></h3>
         <p>Like any programming language, Ruby has both good and bad parts.  It
         would not be a coding guideline document if we didn't go over the parts
