@@ -442,10 +442,44 @@
 
           </li>
           <li>
+            <p>It's generaly best to use <code>self.method</code> instead of
+            <code>Class.method</code> when declaring class methods.  The common
+            wisdom surrounding this statement revolves around the fact that it
+            is harder to perform a rename class refactoring™ when you use the
+            former style.  Those people should probably should learn how to
+            use a more powerful text editor but we generally defer to this
+            style as it causes no harm.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Ninja</span>
+  <span class="c1"># apparently string replacement is hard here</span>
+  <span class="k">def</span> <span class="nc">Ninja</span><span class="o">.</span><span class="nf">create_with_claw</span>
+    <span class="no">Ninja</span><span class="o">.</span><span class="n">new</span> <span class="no">Claw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;doris&#39;</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Ninja</span>
+  <span class="c1"># so much more resilient</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">create_with_claw</span>
+    <span class="no">Ninja</span><span class="o">.</span><span class="n">new</span> <span class="no">Claw</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;doris&#39;</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>Don't declare a block of class methods with 
+            <code>class << self</code>.  The last time I saw someone attempt
+            this was around 2007 so I'm not sure why this one needs to still
+            be on the rulebooks.</p>
+            <img src="images/never_forget.gif"</img>
+          </li>
+          <li>
             <p>The usage of class variables (<code>@@</code>) is highly
-            discouraged.  Why you ask?  Because when you choose inheritence
-            all classes within the hierarchy share the same variable.  Most
-            of the time you wouldn't expect that behavior.</p>
+            discouraged.  Why you ask?  Because when you choose to use 
+            inheritence over composition for some reason all classes within the
+            hierarchy share the same variable.  Most of the time you wouldn't
+            expect that behavior.</p>
             <div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Cat</span>
   <span class="vc">@@capable_of_purring</span> <span class="o">=</span> <span class="kp">true</span>
 

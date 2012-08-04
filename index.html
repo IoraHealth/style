@@ -248,10 +248,28 @@ published: true
             {% include class_structure.md %}
           </li>
           <li>
+            <p>It's generaly best to use <code>self.method</code> instead of
+            <code>Class.method</code> when declaring class methods.  The common
+            wisdom surrounding this statement revolves around the fact that it
+            is harder to perform a rename class refactoring™ when you use the
+            former style.  Those people should probably should learn how to
+            use a more powerful text editor but we generally defer to this
+            style as it causes no harm.</p>
+            {% include class_method_self.md %}
+          </li>
+          <li>
+            <p>Don't declare a block of class methods with 
+            <code>class << self</code>.  The last time I saw someone attempt
+            this was around 2007 so I'm not sure why this one needs to still
+            be on the rulebooks.</p>
+            <img src="images/never_forget.gif"</img>
+          </li>
+          <li>
             <p>The usage of class variables (<code>@@</code>) is highly
-            discouraged.  Why you ask?  Because when you choose inheritence
-            all classes within the hierarchy share the same variable.  Most
-            of the time you wouldn't expect that behavior.</p>
+            discouraged.  Why you ask?  Because when you choose to use 
+            inheritence over composition for some reason all classes within the
+            hierarchy share the same variable.  Most of the time you wouldn't
+            expect that behavior.</p>
             {% include class_variables.md %}
             <p>But how can we set class attributes?  Instead create
             <code>attr_reader</code>, <code>attr_writter</code>, 
