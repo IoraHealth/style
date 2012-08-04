@@ -184,6 +184,67 @@
 
             <p>Code above hoisted from <a href="http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist">David A Black</a>.</p>
           </li>
+          <li>
+            <p>Classes, modules, methods, and variables should have intention 
+            revealing names.  They should, however, be as succintly named as 
+            possible without using abbreviations.  If you feel these two 
+            suggestions are slightly at odds with another, you would indeed be
+            correct.  The key is finding balance.<p>
+            <p>Let's go through some examples to make your life slighly easier:</p>
+            <ul>
+              <li><p>If your class is an implementation of a well known design 
+              pattern™ go ahead and chuck that sucker in the name.</p></li>
+              <div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">KittenFactory</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="no">OrdinaryKiten</span><span class="o">.</span><span class="n">new</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+              <li><p>We strive to avoid smurf-typing.  All smurfs for some reason
+              unknown to the staff at Iora have smurf in their name.  Perhaps
+              Papa Smurf never heard of namespacing.  Since you have in fact
+              discovered the magic of namespacing, use that instead:</p></li>
+              <div class="highlight"><pre><code class="ruby"><span class="k">module</span> <span class="nn">Smurf</span>
+  <span class="k">class</span> <span class="nc">Papa</span>
+    <span class="kp">attr_accessor</span> <span class="ss">:hat</span>
+    <span class="vi">@hat</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+  <span class="k">end</span>
+
+  <span class="k">class</span> <span class="nc">Nerdy</span>
+    <span class="kp">attr_accessor</span> <span class="ss">:glasses</span>
+    <span class="vi">@glasses</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Smurf</span><span class="o">::</span><span class="no">Papa</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hat</span> <span class="c1"># =&gt; &#39;red&#39;</span>
+<span class="no">Smurf</span><span class="o">::</span><span class="no">Nerdy</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">glasses</span> <span class="c1"># =&gt; true</span>
+</code></pre>
+</div>
+
+
+              <li><p>Well known abbreviations are safe to use.  It's pretty safe
+              to assume that as web developers we know what HTTP is.  We need to
+              treat abbreviations like one word in our above guidelines though:</p>
+              <div class="highlight"><pre><code class="ruby">  <span class="k">class</span> <span class="nc">HtmlParser</span>
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">JsonDelegator</span>
+  <span class="k">end</span>
+</code></pre>
+</div>
+
+
+
+              <p>It's a little dicier to use common domain abbreviations though.
+              Will a new developer know what BMI is?  Probably.  SPO2?  I don't
+              even know what that is and I'm writing this guide.  Our naming
+              should be there to clarify the code for every developer.  Not just
+              the ones with lots of experience in our problem domain.</p></li>
+            </ul>
+          </li>
         </ul>
       <h3><a href="#methods">Methods</a></h3>
         <ul>
@@ -301,6 +362,9 @@
         </ul>
       <h3><a href="#classes">Classes</a></h3>
         <ul>
+          <li>
+            <p>We would love it if every class you wrote was <a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLID</a>.</p>
+          </li>
           <li>
             <p>The usage of class variables (<code>@@</code>) is highly
             discouraged.  Why you ask?  Because when you choose inheritence
