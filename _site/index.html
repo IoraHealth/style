@@ -659,6 +659,110 @@
 
           </li>
         </ul>
+      <h3><a href="#exception-handling">Exception Handling</a></h3>
+        <ul>
+          <li>
+            <p>Exceptions shouldn't be used for control flow.  We have
+            <code>if</code> and <code>unless</code> statements for control flow.
+            Instead, exceptions should be truly exceptional conditions.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># bad</span>
+<span class="k">begin</span>
+  <span class="n">n</span> <span class="o">/</span> <span class="n">d</span>
+<span class="k">rescue</span> <span class="no">ZeroDivisionError</span>
+  <span class="nb">puts</span> <span class="s1">&#39;Cannot divide by 0!&#39;</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">zero?</span>
+  <span class="nb">puts</span> <span class="s1">&#39;Cannot divide by 0!&#39;</span>
+<span class="k">else</span>
+  <span class="n">n</span> <span class="o">/</span> <span class="n">d</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>Do not use the <code>begin</code> statement unless you need to.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">make_pasta</span>
+  <span class="n">put_pasta_in_boiling_water</span>
+  <span class="n">stuff_pasta_in_my_face</span>
+<span class="k">rescue</span> <span class="no">OhGodItBurnsMyFace</span>
+  <span class="n">get_to_the_hospital</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>If you don't do anything in a <code>rescue</code> block, then
+            you shouldn't be using a <code>rescue</code> block.  The exceptional
+            condition is swallowed up whole instead of raised to a useful place
+            where it might be fixed.  You should also go straight to your room
+            and get no dessert.</p>
+          </li>
+          <li>
+            <p>Rescuing from the <code>Exception</code> class is considered
+            poor form.  It prevents your code from being able to be terminated
+            gracefully as <code>exit</code> is handled in <code>Exception</code>.
+            Instead use <code>StandardError</code>.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># Please don&#39;t let this method eat your children</span>
+<span class="k">def</span> <span class="nf">will_eat_your_children</span>
+  <span class="nb">exit</span>
+<span class="k">rescue</span> <span class="no">Exception</span>
+  <span class="nb">puts</span> <span class="s1">&#39;Mission Accomplished!&#39;</span>
+<span class="k">end</span>
+
+<span class="c1"># We have avoided children eating on this day</span>
+<span class="k">def</span> <span class="nf">will_eat_your_children</span>
+  <span class="nb">exit</span>
+<span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="nb">puts</span> <span class="s1">&#39;DAG&#39;</span>
+<span class="k">end</span>
+
+<span class="c1"># You can even be very explicit</span>
+<span class="k">def</span> <span class="nf">will_eat_your_children</span>
+  <span class="nb">exit</span>
+<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="nb">puts</span> <span class="s1">&#39;DAG AGAIN&#39;</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>You need to rescue from more specific errors before more generic
+            errors unless you prefer to write code that will never execute.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="c1"># I hate unecessary code</span>
+<span class="k">def</span> <span class="nf">wasted_code_is_awesome</span>
+  <span class="k">begin</span>
+    <span class="n">do_something_error_prone</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">p</span> <span class="s1">&#39;I GOBBLE UP ALL THE ERRORS!&#39;</span>
+  <span class="k">rescue</span> <span class="no">IOError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">p</span> <span class="s1">&#39;I am the lonliest error block&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># now we&#39;re talking</span>
+<span class="k">def</span> <span class="nf">every_line_of_code_is_a_liability</span>
+  <span class="k">begin</span>
+    <span class="n">do_something_error_prone</span>
+  <span class="k">rescue</span> <span class="no">IOError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">p</span> <span class="s1">&#39;NOW ITS MY TIME TO SHINE&#39;</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">p</span> <span class="s1">&#39;I miss all the IOErrors :(&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+          </li>
+        </ul>
       <h3><a href="#language-trivia">Language Trivia</a></h3>
         <p>Like any programming language, Ruby has both good and bad parts.  It
         would not be a coding guideline document if we didn't go over the parts
@@ -719,8 +823,8 @@
             <p>Use the nilguard (<code>||=</code>) freely to memoize variables.
             There are exceptions to when the nilguard will bite you in the butt:</p>
             <ul>
-              <li>When <code>nil</code> is a valid value (duhhhhhhhh)</li>
-              <li>When <code>false</code> is a valid value</li>
+              <li><p>When <code>nil</code> is a valid value (duhhhhhhhh)</p></li>
+              <li><p>When <code>false</code> is a valid value</p></li>
               <div class="highlight"><pre><code class="ruby"><span class="c1"># Future arrest pending</span>
 <span class="n">pants_on</span> <span class="o">=</span> <span class="kp">false</span>
 

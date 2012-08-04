@@ -324,6 +324,38 @@ published: true
             {% include if_not_makes_me_sad.md %}
           </li>
         </ul>
+      <h3><a href="#exception-handling">Exception Handling</a></h3>
+        <ul>
+          <li>
+            <p>Exceptions shouldn't be used for control flow.  We have
+            <code>if</code> and <code>unless</code> statements for control flow.
+            Instead, exceptions should be truly exceptional conditions.</p>
+            {% include exception_control_flow.md %}
+          </li>
+          <li>
+            <p>Do not use the <code>begin</code> statement unless you need to.</p>
+            {% include implicit_begin.md %}
+          </li>
+          <li>
+            <p>If you don't do anything in a <code>rescue</code> block, then
+            you shouldn't be using a <code>rescue</code> block.  The exceptional
+            condition is swallowed up whole instead of raised to a useful place
+            where it might be fixed.  You should also go straight to your room
+            and get no dessert.</p>
+          </li>
+          <li>
+            <p>Rescuing from the <code>Exception</code> class is considered
+            poor form.  It prevents your code from being able to be terminated
+            gracefully as <code>exit</code> is handled in <code>Exception</code>.
+            Instead use <code>StandardError</code>.</p>
+            {% include standard_error.md %}
+          </li>
+          <li>
+            <p>You need to rescue from more specific errors before more generic
+            errors unless you prefer to write code that will never execute.</p>
+            {% include specific_error.md %}
+          </li>
+        </ul>
       <h3><a href="#language-trivia">Language Trivia</a></h3>
         <p>Like any programming language, Ruby has both good and bad parts.  It
         would not be a coding guideline document if we didn't go over the parts
@@ -361,8 +393,8 @@ published: true
             <p>Use the nilguard (<code>||=</code>) freely to memoize variables.
             There are exceptions to when the nilguard will bite you in the butt:</p>
             <ul>
-              <li>When <code>nil</code> is a valid value (duhhhhhhhh)</li>
-              <li>When <code>false</code> is a valid value</li>
+              <li><p>When <code>nil</code> is a valid value (duhhhhhhhh)</p></li>
+              <li><p>When <code>false</code> is a valid value</p></li>
               {% include nilguard_alternative.md %}
             </ul>
           </li>
