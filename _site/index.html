@@ -785,6 +785,45 @@
 
 
         </ul>
+      <h3><a href="#strings">Strings</a></h3>
+        <ul>
+          <li>
+            <p>Use <code>'</code> to envelop strings that do not need
+            to be interpolated or need any fancy characters.  Instead of
+            escaping <code>'</code> and <code>"</code> prefer the use of the
+            <code>%{}</code> string literals.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="n">single_quote</span> <span class="o">=</span> <span class="s1">&#39;This is just a simple song&#39;</span>
+<span class="n">double_quote</span> <span class="o">=</span> <span class="s2">&quot;To see what </span><span class="si">#{</span><span class="n">you</span><span class="si">}</span><span class="s2"> done&quot;</span>
+
+<span class="n">also_single_quote</span>  <span class="o">=</span> <span class="sx">%q{Jaimie&#39;s simple song}</span>
+<span class="n">also_double_quote</span>  <span class="o">=</span> <span class="sx">%Q{</span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="sx">&#39;s simple song}</span>
+<span class="n">third_double_quote</span> <span class="o">=</span> <span class="sx">%{</span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="sx">&#39;s magic song}</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>Prefer the use of string interpolation over concatenation.  I'm
+            not entirely sure why I need to convince you of this.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="n">ugly_string</span>   <span class="o">=</span> <span class="s1">&#39;The shins are the &#39;</span> <span class="o">+</span> <span class="n">worst</span> <span class="o">+</span> <span class="s1">&#39; band I have ever heard.&#39;</span>
+<span class="n">pretty_string</span> <span class="o">=</span> <span class="s2">&quot;The shins are the </span><span class="si">#{</span><span class="n">worst</span><span class="si">}</span><span class="s2"> band I have ever heard.&quot;</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>Prefer the use of <code>String#<<</code> over <code>String#+</code>.
+            The former modifies the string in place while the latter creates new
+            objects.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="n">paragraphs</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">paragraph</span><span class="o">|</span> <span class="n">html</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;&lt;p&gt;</span><span class="si">#{</span><span class="n">paragraph</span><span class="si">}</span><span class="s2">&lt;/p&gt;&quot;</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+
+          </li>
+        </ul>
       <h3><a href="#language-trivia">Language Trivia</a></h3>
         <p>Like any programming language, Ruby has both good and bad parts.  It
         would not be a coding guideline document if we didn't go over the parts

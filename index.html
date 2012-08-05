@@ -365,6 +365,27 @@ published: true
           dead to me.</p></li>
           {% include symbol_hash_key.md %}
         </ul>
+      <h3><a href="#strings">Strings</a></h3>
+        <ul>
+          <li>
+            <p>Use <code>'</code> to envelop strings that do not need
+            to be interpolated or need any fancy characters.  Instead of
+            escaping <code>'</code> and <code>"</code> prefer the use of the
+            <code>%{}</code> string literals.</p>
+            {% include string_literals.md %}
+          </li>
+          <li>
+            <p>Prefer the use of string interpolation over concatenation.  I'm
+            not entirely sure why I need to convince you of this.</p>
+            {% include interpolation.md %}
+          </li>
+          <li>
+            <p>Prefer the use of <code>String#<<</code> over <code>String#+</code>.
+            The former modifies the string in place while the latter creates new
+            objects.</p>
+            {% include string_concatenation.md %}
+          </li>
+        </ul>
       <h3><a href="#language-trivia">Language Trivia</a></h3>
         <p>Like any programming language, Ruby has both good and bad parts.  It
         would not be a coding guideline document if we didn't go over the parts
