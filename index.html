@@ -386,6 +386,26 @@ published: true
             {% include string_concatenation.md %}
           </li>
         </ul>
+      <h3><a href="#regular-expressions">Regular Expressions</a></h3>
+        <ul>
+          <li>
+            <p>Use <code>\A</code> and <code>\Z</code> freely as they stand for
+            the beginning and ending of a string.  <code>^</code> and
+            <code>$</code> are for with the beginning/ending of a line.  This
+            is probably one of our most common regex mistakes.</p>
+            {% include beginning_of_string.md %}
+          </li>
+          <li>
+            <p>When you aren't interested in the results of a parenthesized group
+            it would be fantastic if you used non-capturing groups.</p>
+            {% include non_captured_groups.md %}
+          </li>
+          <li>
+            <p>Use the <code>x</code> modifier for complex regexs.  Just ensure
+            that the regex captures whitespace needs appropriately.</p>
+            {% include x_modifier.md %}
+          </li>
+        </ul>
       <h3><a href="#language-trivia">Language Trivia</a></h3>
         <p>Like any programming language, Ruby has both good and bad parts.  It
         would not be a coding guideline document if we didn't go over the parts

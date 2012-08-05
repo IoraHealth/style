@@ -824,6 +824,47 @@
 
           </li>
         </ul>
+      <h3><a href="#regular-expressions">Regular Expressions</a></h3>
+        <ul>
+          <li>
+            <p>Use <code>\A</code> and <code>\Z</code> freely as they stand for
+            the beginning and ending of a string.  <code>^</code> and
+            <code>$</code> are for with the beginning/ending of a line.  This
+            is probably one of our most common regex mistakes.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;line ending</span><span class="se">\n</span><span class="s2">username&quot;</span>
+<span class="n">string</span><span class="o">[</span><span class="sr">/^username$/</span><span class="o">]</span>   <span class="c1"># matches</span>
+<span class="n">string</span><span class="o">[</span><span class="sr">/\Ausername\Z/</span><span class="o">]</span> <span class="c1"># does not match</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>When you aren't interested in the results of a parenthesized group
+            it would be fantastic if you used non-capturing groups.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="sr">/(first|second)/</span>   <span class="c1"># bad</span>
+<span class="sr">/(?:first|second)/</span> <span class="c1"># good</span>
+</code></pre>
+</div>
+
+
+          </li>
+          <li>
+            <p>Use the <code>x</code> modifier for complex regexs.  Just ensure
+            that the regex captures whitespace needs appropriately.</p>
+            <div class="highlight"><pre><code class="ruby"><span class="n">regexp</span> <span class="o">=</span> <span class="sr">%r{</span>
+<span class="sr">  start         # some text</span>
+<span class="sr">  \s            # white space char</span>
+<span class="sr">  (group)       # first group</span>
+<span class="sr">  (?:alt1|alt2) # some alternation</span>
+<span class="sr">  end</span>
+<span class="sr">}x</span>
+</code></pre>
+</div>
+
+
+          </li>
+        </ul>
       <h3><a href="#language-trivia">Language Trivia</a></h3>
         <p>Like any programming language, Ruby has both good and bad parts.  It
         would not be a coding guideline document if we didn't go over the parts
